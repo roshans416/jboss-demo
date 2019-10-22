@@ -25,7 +25,7 @@ def answerQuestion = ''
                 sh "oc login https://api.aahk.aahk-hpe.com:6443 -u kubeadmin -p ${env.OCP_PASSWORD}"
                 sh "oc new-project eap"
                 sh "oc new-build registry.access.redhat.com/jboss-eap-7/eap72-openshift:1.0-13 --binary=true --name=esar"
-                sh "oc start-build weather-app --from-file=ESAREAR.ear --wait"
+                sh "oc start-build esar --from-file=ESAREAR.ear --wait"
                 sh "oc new-app esar"
                 sh "oc4 create route edge --service=esar --insecure-policy=Redirect --hostname=esar-eap.apps.aahk.aahk-hpe.com"}}
 		currentBuild.result = 'SUCCESS'
